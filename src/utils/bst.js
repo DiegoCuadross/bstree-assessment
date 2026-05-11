@@ -91,8 +91,8 @@ export const search = (node, value) => {
  * @returns {number[]}
  */
 export const inOrder = (node) => {
-  // TODO: Implementar
-  return [];
+  if (node === null || node === undefined) return [];
+  return [...inOrder(node.left), node.value, ...inOrder(node.right)];
 };
 
 /**
@@ -104,8 +104,8 @@ export const inOrder = (node) => {
  * @returns {number[]}
  */
 export const preOrder = (node) => {
-  // TODO: Implementar
-  return [];
+  if (node === null || node === undefined) return [];
+  return [node.value, ...preOrder(node.left), ...preOrder(node.right)];
 };
 
 /**
@@ -117,8 +117,8 @@ export const preOrder = (node) => {
  * @returns {number[]}
  */
 export const postOrder = (node) => {
-  // TODO: Implementar
-  return [];
+  if (node === null || node === undefined) return [];
+  return [...postOrder(node.left), ...postOrder(node.right), node.value];
 };
 
 // ─── Tree Transformation ─────────────────────────────────────────────────────
@@ -165,8 +165,8 @@ export const toD3Format = (node) => {
  * @returns {number}
  */
 export const getHeight = (node) => {
-  // TODO: Implementar
-  return 0;
+  if (node === null || node === undefined) return 0;
+  return 1 + Math.max(getHeight(node.left), getHeight(node.right));
 };
 
 /**
