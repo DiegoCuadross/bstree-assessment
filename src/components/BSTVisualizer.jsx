@@ -11,7 +11,7 @@
 import { useState, useCallback } from "react";
 import Tree from "react-d3-tree";
 
-import { insert, search, inOrder, preOrder, postOrder, toD3Format, randomInt } from "../utils/bst";
+import { createNode, insert, search, inOrder, preOrder, postOrder, toD3Format, randomInt } from "../utils/bst";
 import TraversalPanel from "./TraversalPanel";
 import SearchBar from "./SearchBar";
 
@@ -43,11 +43,13 @@ export default function BSTVisualizer() {
   const handleInsert = () => {
     const parsed = parseInt(inputValue, 10);
 
-    // BUG #6 (UX): Acepta NaN silenciosamente. Si el usuario escribe
-    // "abc" y presiona insertar, no pasa nada y no hay feedback.
-    // El error se traga. Debes manejar este caso y mostrar el errorMessage.
     if (!isNaN(parsed)) {
-      setRoot((prevRoot) => insert(prevRoot, parsed));
+      setRoot((prevRoot) => {
+        if (prevRoot === null || prevRoot === undefined) {
+          return createNode(parsed);
+        }
+        return insert(prevRoot, parsed);
+      });
       setInputValue("");
       setErrorMessage("");
     }

@@ -34,8 +34,8 @@ export const createNode = (value) => ({
  * @returns {object} - Nuevo subárbol con el valor insertado
  */
 export const insert = (node, value) => {
-  if (node === null) {
-    return createNode(value); // ← Esto está bien, pero ¿cuándo se usa?
+  if (node === null || node === undefined) {
+    return createNode(value);
   }
 
   if (value > node.value) {
