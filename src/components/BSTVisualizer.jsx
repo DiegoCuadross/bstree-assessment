@@ -30,7 +30,9 @@ export default function BSTVisualizer() {
   const handleInsert = useCallback(() => {
     const parsed = parseInt(inputValue, 10);
 
-    if (!isNaN(parsed)) {
+    if (isNaN(parsed)) {
+      setErrorMessage("Por favor ingresa un número válido.");
+    } else {
       setRoot((prevRoot) => {
         if (prevRoot === null || prevRoot === undefined) {
           return createNode(parsed);
@@ -107,7 +109,7 @@ export default function BSTVisualizer() {
         </div>
 
         {errorMessage && (
-          <p className={styles.error}>{errorMessage}</p>
+          <p className={styles.errorMessage}>{errorMessage}</p>
         )}
 
         <SearchBar
