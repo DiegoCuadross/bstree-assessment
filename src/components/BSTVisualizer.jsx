@@ -69,20 +69,28 @@ export default function BSTVisualizer() {
   );
 
   // ── Node Rendering ──────────────────────────────────────────────────────────
-  const renderCustomNode = useCallback(({ nodeDatum }) => (
-    <g>
-      <circle r={20} fill="#4A90D9" stroke="#fff" strokeWidth={2} />
-      <text
-        fill="white"
-        textAnchor="middle"
-        dominantBaseline="central"
-        fontSize={12}
-        fontWeight="bold"
-      >
-        {nodeDatum.name}
-      </text>
-    </g>
-  ), []);
+  const renderCustomNode = useCallback(({ nodeDatum }) => {
+    const isFound = foundNode !== null && nodeDatum.name === String(foundNode);
+    return (
+      <g>
+        <circle
+          r={20}
+          fill={isFound ? "#F5A623" : "#4A90D9"}
+          stroke={isFound ? "#fff" : "#fff"}
+          strokeWidth={isFound ? 3 : 2}
+        />
+        <text
+          fill="white"
+          textAnchor="middle"
+          dominantBaseline="central"
+          fontSize={12}
+          fontWeight="bold"
+        >
+          {nodeDatum.name}
+        </text>
+      </g>
+    );
+  }, [foundNode]);
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
