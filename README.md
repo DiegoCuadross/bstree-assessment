@@ -1,3 +1,6 @@
+Link del video explicativo del funcionamiento de la app
+https://youtu.be/6JgnhUUo5gg
+
 # 🌳 BST Visualizer — Technical Challenge
 
 > Herramientas de Empleabilidad · Prueba Técnica Práctica
